@@ -1,0 +1,59 @@
+.groupsContainer {
+    max-height: calc(87vh - 10vh - 70px);
+    overflow-y: scroll;
+    padding-right: 10px;
+    margin-right: 10px;
+    
+   
+  }
+  
+  /* Hide the scrollbar, but still allow scrolling */
+  .groupsContainer::-webkit-scrollbar {
+    width: 0px;  /* Hide scrollbar for Webkit-based browsers */
+  }
+  
+  .groupsContainer::-webkit-scrollbar-thumb {
+    background: transparent;  /* Remove thumb */
+  }
+  
+  /* For Firefox */
+  .groupsContainer {
+    scrollbar-width: none;  /* Hide scrollbar for Firefox */
+  }
+  
+  /* Group Name Styling on Hover */
+  .group:hover {
+    background-color: #cccccc;  /* Change background color on hover */
+    transition: background-color 0.3s ease;  /* Smooth transition */
+  }
+  
+  
+  .chat-initials {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #b30095;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: 15px;
+  }
+  
+  .chat-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+  
+  /* Remove any extra margin or padding from inside the scrollable container */
+  .group-names {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;  /* Scroll only if content exceeds max-height */
+    padding: 0;
+    margin: 0;
+  }
+  

@@ -1,0 +1,520 @@
+/* General Body Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  /* Container for both columns */
+  .container {
+    display: flex;
+    height: 80vh;
+    width: 90vw;
+    max-width: 1024px;
+    
+    flex-direction: row;
+  }
+  
+  .column1,
+  .column2 {
+   
+   margin-top: 80px;
+  }
+  
+  /* Column 1 (Group Names and Pocket Notes) */
+  .column1 {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    padding: 20px 30px;
+     /* Hides overflow to keep layout clean */
+    position: relative;
+    overflow-y: auto; /* Allow scrolling in column 1 */
+    overflow-x: hidden;
+    
+  }
+  .column1 h1 {
+    position: sticky;
+    top: 0;
+    padding: 15px 0;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 10; /* Make sure the header stays above the group names */
+    margin: 0; /* Remove default margin */
+    text-align: center;
+  }
+  
+  /* Header for Group Names */
+  .group-header {
+    display: flex;
+    gap: 8px; /* Space between initials and name */
+    padding: 15px 0;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #001F8B;
+    color: #f1f1f1;
+    width: 103%;
+    height: 10vh; /* Fixed header height */
+    position: sticky; /* Stick at top */
+    top: 0;
+    z-index: 10;
+    margin-top: -10px;
+    margin-left: -10px;
+  }
+  
+  /* Group Names Section (scrollable) */
+  .group-names {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: auto; /* Enable scrolling */
+    
+  }
+  
+  /* Add Group Button */
+  .group {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 5px;
+  }
+  
+  .group:hover {
+    background-color: #CCCCCC;
+   
+  }
+  
+  /* Add Group Button */
+  .addGroupBtn {
+    position: sticky;
+    bottom: 10px; /* Position just above the bottom */
+    width: 50px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #001F8B;
+    border: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    margin-top: -45px; /* Adds a small space above the button */
+    margin-left: 230px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Column 2 (Chat Interface) */
+  .column2 {
+    background-color: #DAE5F5;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  /* Note Container Section (inside Column 2) */
+  .note-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    width: 100.5%;
+    background-color: #001F8B;
+    padding: 8px;
+    right: 10px;
+    top: 12px;
+  }
+  
+  /* Group Initials Styling */
+  .group-initials {
+    width: 36px;  /* Adjust the size of the initials background */
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-right: 12px;  /* Spacing between initials and name */
+    font-size: 18px;  /* Adjust size of initials */
+  }
+  .column1 .group-initials{
+    width: 50px;
+    height: 36px;
+  }
+  
+  /* Message Input */
+  .note-input {
+    width: 96%;
+    height: 70px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    outline: none;
+    word-wrap: break-word;
+    font-size: 14px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    text-align: left;
+   justify-content: right;
+  }
+  
+  /* Send Button */
+  /* Send Button */
+  .sendBtn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    right: 35px;
+    bottom: 20px;
+    font-size: 20px;
+    opacity: 0.5; /* Default opacity (disabled) */
+    pointer-events: none; /* Disable button interaction initially */
+  }
+  
+  .sendBtn.active {
+    opacity: 1; /* Make active button visible */
+    pointer-events: auto; /* Enable button interaction when active */
+    color: #001F8B;
+    transform: rotate(320deg);
+    top:35px;
+    right:20px;
+  }
+  
+  
+  /* Messages Section */
+  .messages {
+    background-color: #DAE5F5;
+    padding: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100% - 100px); /* Leave space for the input */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  
+  }
+  
+  /* Message Styling */
+  .message {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    word-wrap: break-word;
+    position: relative;
+    text-align: left;
+    text-indent: 0;
+    width: 100%;
+    margin-left: 0;
+  
+  }
+  /* .message p{
+    text-align: left;
+    text-indent: 0;
+    justify-content: left;
+  } */
+  
+  .message span {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+  }
+  
+  /* Footer Section */
+  .column1 .footer,
+  .column2 .footer {
+    text-align: center;
+    padding: 10px; 
+    font-size: 12px;
+    color: #555;
+  }
+  
+  /* Project Image Styling */
+  .project-image {
+    width: 90%;  /* Reduce the size */
+    max-width: 500px;  /* Limit the max width */
+    margin: -15px auto 10px auto;  /* Center it and bring it down a little */
+  
+    display: block;
+  }
+  
+  /* Column 2 Header (Pocket Notes) */
+  .column2 h1 {
+    text-align: center;
+    margin-top: -15px;  /* Move it below the image */
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  /* Paragraph Styling (centered below Pocket Notes) */
+  .column2 h2 {
+    text-align: center;
+    font-size: 16px;
+    color: black;
+    line-height: 1.5;
+    margin: 10px 0;
+    margin-top: -10px;
+    font-weight: 200;
+  }
+  
+  /* Footer Section */
+  footer {
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+    font-weight: 200;  /* Make the text bold */
+    margin-top: 65px;
+    background-color: transparent;
+  }
+  
+  /* Remove background and show only text with lock icon */
+  footer .fa-lock {
+    margin-right: 5px;
+    color: #000;  /* Lock icon color */
+    background-color: transparent;
+  }
+  .footer{
+    background-color: transparent;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    body{
+      max-height:70vh
+    }
+    /* Hide Column 2 */
+    .column2 {
+      display: none;
+    }
+  
+    /* Make Column 1 take full width */
+    .column1 {
+      width: 90%;
+      margin-top: 0;
+      height: 80vh;
+    }
+  
+    /* Center the Pocket Notes heading and group names */
+    .column1 h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-weight: bold;
+      
+    }
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+    }
+    /* .chat-name{
+      background-color: #000;
+    } */
+  
+    /* Adjust Group Names Alignment */
+    .group {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      border-radius: 5px;
+      justify-content: center;
+      gap: 0px;
+      margin-left: 200px;
+      
+     
+    }
+    .groupsContainer{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-right: 15px;
+      margin-right: 10px;
+      flex-direction: column;
+      width:90%;
+      
+    }
+    .group-name{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+     .group-initials {
+      display: flex; /* Ensure initials are flex items */
+      justify-content: center; /* Center initials horizontally */
+      align-items: center; /* Center initials vertically */
+      width: 46px; /* Adjust the size of the initials background */
+      height: 36px;
+      border-radius: 50%;
+      color: white;
+      font-size: 18px; /* Adjust size of initials */
+      margin-right: 12px; /* Spacing between initials and name */
+      
+    }
+    /* Move and adjust size of Add Group Button for Column 1 */
+    .addGroupBtn {
+      position: fixed; /* Make the button fixed to stay in view on scroll */
+      bottom: 150px;
+      right: 130px; /* Position it in the bottom-right corner of the screen */
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+  } 
+  @media (max-width: 543px){
+    .addGroupBtn{
+      right: 50px;
+      bottom: 110px;
+      
+    }
+   }
+     @media (max-width: 518px){
+      .addGroupBtn{
+        right: 50px;
+        bottom: 110px;
+        
+      }
+     }
+     @media (max-width: 298px){
+      .addGroupBtn{
+        right: 35px;
+        
+      }
+     }
+     @media (min-width:770px) and (max-width: 932px){
+      .addGroupBtn{
+        margin-left:175px;
+        
+      }
+     }
+  
+     @media (max-width: 643px) {
+      .group {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        border-radius: 5px;
+        justify-content: center;
+        gap: 0px;
+        margin-left: 130px;
+     }
+    }
+    @media (max-width: 543px) and (min-width:418px) {
+      .group {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        border-radius: 5px;
+        justify-content: center;
+        gap: 0px;
+        margin-left: 90px;
+        
+     }
+    }
+    @media (max-width: 416px) {
+      .group {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        border-radius: 5px;
+        justify-content: center;
+        gap: 0px;
+        margin-left: 40px;
+     }
+    }
+    @media (max-width: 356px) {
+      .group {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        border-radius: 5px;
+        justify-content: center;
+        gap: 0px;
+        margin-left: 10px;
+     }
+    }
+    @media (max-width: 324px) {
+      .group {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        border-radius: 5px;
+        justify-content: center;
+        gap: 0px;
+        margin-left: -20px;
+     }
+    }
+      @media (min-width:770px) and (max-width:1084px){
+        footer {
+          text-align: center;
+          font-size: 14px;
+          color: #000;
+          font-weight: 200;  /* Make the text bold */
+          margin-top: 25px;
+          background-color: transparent;
+        }
+      }
+  
+    /* Media query for screens 786px and smaller */
+  @media (max-width: 786px) {
+    .container.show-column2 .column1 {
+      display: none; /* Hide column1 when column2 is shown */
+    }
+  
+    .container.show-column2 .column2 {
+      display: block; /* Show column2 when a group is selected */
+    }
+  
+    .column1 {
+      display: block; /* Show column1 by default */
+    }
+  
+    .column2 {
+      display: none; /* Hide column2 by default */
+    }
+  }
+  
